@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <title>Webbanrop i en SPA-applikation (VG)</title>
+    <meta content="initial-scale=1, width=device-width" name="viewport">
+    <style>
+      /* https://v3.vuejs.org/api/directives.html#v-cloak */
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- v-cloak förekommer även här -->
+    <div id="app" v-cloak>
+      <!-- Endast template-elementets innehåll renderas i slutresultatet -->
+      <template v-if="cities !== null">
+        <nav>
+          <ul>
+            <li v-for="city in cities">
+              <router-link :to="`/${city.id}`">{{ city.name }}</router-link>
+            </li>
+          </ul>
+        </nav>
+        <main>
+          <router-view></router-view>
+        </main>
+      </template>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
